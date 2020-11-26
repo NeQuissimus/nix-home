@@ -21,4 +21,5 @@ for key in data["files"]:
         print "Creating file " + out + "/" + key
         with open(out + "/" + key, "w") as f:
             f.write(val["content"].encode('UTF-8'))
-
+            if "mode" in val:
+                os.chmod(out + "/" + key, int(val["mode"], 8))
